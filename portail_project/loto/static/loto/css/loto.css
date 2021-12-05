@@ -1,0 +1,44 @@
+body{
+  background-color: grey;
+  display: flex;
+  flex-direction: column
+}
+
+#bdd_uptdate{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+#response{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 4;
+  flex-wrap: wrap;
+   width:50%;
+  background-color: white;
+  margin: 8px
+}
+
+#response p {
+  width: 108px;
+  border: solid 2px black;
+  text-align: center;
+  margin: 4px
+}
+
+
+#loto_datatable table{
+  border-collapse: collapse;
+}
+
+th{
+  border: solid 2px black;
+  white-space: nowrap;
+}
+
+td{
+border: solid 1px black;
+white-space: nowrap;
+padding:2px
+}

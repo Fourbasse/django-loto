@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    {% load static %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/javascript" src="{% static 'loto/js/loto.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="{% static 'loto/css/loto.css' %}">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="utf-8">
+    <title>Django test</title>
+  </head>
+  <body>
+    <div id="menu">
+      <ul>
+        <li><a href="#loto">Loto</a></li>
+        <li><a href="#euromillion">Euromillion</a></li>
+      </ul>
+      <div id="loto">
+        <center><p>Loto</p></center>
+        <div id="loto_sous_menu">
+          <ul>
+            <li><a href="#simulation">Simulation</a></li>
+            <li><a href="#loto_datatable">Tableaux des tirages</a></li>
+          </ul>
+          <div id="simulation">
+            <div id="bdd_uptdate">
+              <form action="#" method="post">
+                {% csrf_token %}
+                  <button type="button" action="bdd_update" id="btn" name="button_uptdate">Mise à jour des tirages</button>
+              </form>
+            </div>
+            <div id="statut">
+            </div>
+            <div id="simulation_tirage">
+              {% csrf_token %}
+              <form action="#" method="post">
+                <input type="text" id="id_sim" placeholder="nombre de tirages"/>
+                <button type="button" action="simulation" id="btn_sim" name="simulation">Valider</button>
+            </div>
+            <div id="response">
+            {% include "loto/simulation.html" %}
+            </div>
+          </div>
+          <div id="loto_datatable">
+              <table id="loto_tableau_tirages">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Tirage</th>
+                  </tr>
+                </thead>
+
+                {% include "loto/loto_datatable.html" %}
+
+              </table>
+          </div>
+        </div>
+    </div>
+      <div id="euromillion">
+        <p>COucou c'est pas encore developpé</p>
+      </div>
+    </div>
+  </body>
+</html>
