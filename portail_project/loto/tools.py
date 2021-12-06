@@ -1,8 +1,10 @@
 from django.views.decorators.csrf import csrf_exempt
 from django.http import *
-from .models import LotoTirage
+from .models import LotoTirage,EuromillionTirage
 from bs4 import BeautifulSoup
 import requests,random, unicodedata
+
+
 
 url="http://loto.akroweb.fr/loto-historique-tirages/"
 
