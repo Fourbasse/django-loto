@@ -28,10 +28,11 @@
             <li><a href="#loto_datatable">Tableaux des tirages</a></li>
           </ul>
           <div id="simulation">
-            <div id="bdd_uptdate">
+            <div id="loto_bdd_uptdate">
               <form action="#" method="post">
                 {% csrf_token %}
-                  <button type="button" action="bdd_update" id="btn" name="button_uptdate">Mise à jour des tirages</button>
+                  <button type="button" action="loto_bdd_update" id="loto_btn_update" name="button_uptdate">Mise à jour des tirages</button>
+                  {% include "loto/loto_update.html" %}
               </form>
             </div>
             <div id="statut">
@@ -39,11 +40,11 @@
             <div id="simulation_tirage">
               {% csrf_token %}
               <form action="#" method="post">
-                <input type="text" id="id_sim" placeholder="nombre de tirages"/>
+                <input type="text" id="loto_sim" placeholder="nombre de tirages"/>
                 <button type="button" action="simulation" id="btn_sim" name="simulation">Valider</button>
             </div>
             <div id="response">
-            {% include "loto/simulation.html" %}
+            {% include "loto/loto_simulation.html" %}
             </div>
           </div>
           <div id="loto_datatable">
@@ -62,7 +63,31 @@
         </div>
     </div>
       <div id="euromillion">
-        <p>COucou c'est pas encore developpé</p>
+        <center><p>Euromillion</p></center>
+        <div id="euromillion_sous_menu">
+          <ul>
+            <li><a href="#euromillion_simulation">Simulation</a></li>
+            <li><a href="#euromillion_datatable">Tableaux des tirages</a></li>
+          </ul>
+          <div id="simulation">
+            <div id="bdd_uptdate">
+              <form action="#" method="post">
+                {% csrf_token %}
+                  <button type="button" action="euromillion_bdd_update" class="btn" name="button_uptdate">Mise à jour des tirages</button>
+              </form>
+            </div>
+            <div id="statut">
+            </div>
+            <div id="simulation_tirage">
+              {% csrf_token %}
+              <form action="#" method="post">
+                <input type="text" id="euro_sim" placeholder="nombre de tirages"/>
+                <button type="button" action="simulation" id="btn_sim" name="simulation">Valider</button>
+            </div>
+            <div id="response">
+            {% include "loto/euromillion_simulation.html" %}
+            </div>
+          </div>
       </div>
     </div>
   </body>

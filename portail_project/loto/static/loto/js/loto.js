@@ -1,3 +1,4 @@
+// Fonction pour récupere le crsftoken
 function getCookie(name) {
     let cookieValue = null;
     if (document.cookie && document.cookie !== '') {
@@ -19,7 +20,11 @@ $(document).ready(function(){
   const request=new Request('{% url "test" %}',{method: 'POST',})
 
   $('#menu').tabs();
+
+  // Partie loto tout court
+
   $('#loto_sous_menu').tabs();
+  $('#euromillion_sous_menu').tabs();
 
   let csrftoken = getCookie('csrftoken');
   // console.log(csrftoken);
@@ -28,29 +33,25 @@ $(document).ready(function(){
             xhr.setRequestHeader('Csrf-Token', csrftoken);
         }
     });
-
-  $('#btn').on('click',function(){
-    let $answer = $('#answer');
-    let value=$('#btn').attr('action');
-    if ( value == "bdd_update"){
-      // let request=new Request('test/',{method: 'POST',body:data})
-      // fetch(request)
-      //   .then(response => response.json())
-      //   .then(result => {console.log(result);})
-    $.ajax({
-      headers: { "X-CSRFToken": csrftoken },
-      url: '',
-      type: "post",
-      data: {'x':value},
-      success: function(test){
-        $('body').empty();
-        $('body').append(test);
-      }
-    });
-  }
+  //Loto update
+  $('#loto_btn_update').on('click',function(){
+    let value=$(this).attr('action');
+    console.log('value');
+    if ( value == "loto_bdd_update"){
+        $.ajax({
+          headers: { "X-CSRFToken": csrftoken },
+          url: '',
+          type: "post",
+          data: {'x':value},
+          success: function(test){
+            $('body').empty();
+            $('body').append(test);
+          }
+        });
+    }
   });
   $('#btn_sim').on('click',function(){
-    let $answer = $('#id_sim');
+    let $answer = $('#loto_sim');
     let value=$answer.val();
     console.log(value);
     $.ajax({
@@ -85,5 +86,10 @@ $(document).ready(function(){
 
     });
   });
+
+  // Partie Euromillion
+  // Initialisation de la base de donnée
+
+
 
 });
