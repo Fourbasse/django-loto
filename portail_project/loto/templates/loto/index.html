@@ -73,7 +73,7 @@
             <div id="bdd_uptdate">
               <form action="#" method="post">
                 {% csrf_token %}
-                  <button type="button" action="euromillion_bdd_update" class="btn" name="button_uptdate">Mise à jour des tirages</button>
+                  <button type="button" action="euromillion_bdd_update" id="euromillion_bdd_update" name="button_uptdate">Mise à jour des tirages</button>
                   {% include "loto/euromillion_update.html" %}
               </form>
             </div>

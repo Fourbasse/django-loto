@@ -40,12 +40,11 @@ $(document).ready(function(){
     if ( value == "loto_bdd_update"){
         $.ajax({
           headers: { "X-CSRFToken": csrftoken },
-          url: '',
+          url: 'loto_update',
           type: "post",
           data: {'x':value},
           success: function(test){
-            $('body').empty();
-            $('body').append(test);
+            alert("Bdd mise à jour");
           }
         });
     }
@@ -56,7 +55,7 @@ $(document).ready(function(){
     console.log(value);
     $.ajax({
       headers: { "X-CSRFToken": csrftoken },
-      url: 'simulation',
+      url: 'loto_simulation',
       type: "post",
       data: {'x':value},
       // dataType:"json",
@@ -81,7 +80,13 @@ $(document).ready(function(){
         $.each(test,function(key,value){
           $('#loto_tbody').append('<tr><td>'+key+'</td><td>'+value+'</td></tr>');
         });
-        $('#loto_tableau_tirages').DataTable();
+        $('#loto_tableau_tirages').DataTable({
+          "autoWidth": false,
+          "columnDefs":[
+            {width: 10},
+            {"width":"20px"}
+          ]
+        });
       }
 
     });
@@ -89,7 +94,21 @@ $(document).ready(function(){
 
   // Partie Euromillion
   // Initialisation de la base de donnée
-
+  $('#euromillion_bdd_update').on('click',function(){
+    let value=$(this).attr('action');
+    console.log(value);
+    if ( value == "euromillion_bdd_update"){
+        $.ajax({
+          headers: { "X-CSRFToken": csrftoken },
+          url: 'euromillion_update',
+          type: "post",
+          data: {'x':value},
+          success: function(test){
+            alert("Bdd mise à jour");
+          }
+        });
+    }
+  });
 
 
 });

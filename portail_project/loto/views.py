@@ -11,12 +11,12 @@ def home(request):
 def LotoUpdate(request):
     post=request.POST.get('x')
     y=BddUpdate(post)
-    return render(request,'loto/index.html',{'status':y})
+    return render(request,'loto/loto_update.html',{'status':y})
 
 def EuromillionBdd(request):
     post=request.POST.get('x')
     y=BddUpdate(post)
-    return render(request,'loto/index.html',{'status':y})
+    return render(request,'loto/euromillion_update.html',{'status':y})
 
 
 def Simulation(request):

@@ -39,6 +39,7 @@ def EuromillionExtractTirage(url):
 		link=url+str(y)+"/"
 		get=requests.get(url)
 		html=get.text
+		print(link)
 		#Lecture de la page html
 		#parsing
 		HTML = BeautifulSoup(html,'html.parser')
@@ -48,6 +49,7 @@ def EuromillionExtractTirage(url):
 				lentd=len(td.text)
 				if lentd > 2 :
 					ligne.append(td.text.split()[1])
+					print(td.text)
 				else:
 					ligne.append(td.text)
 			if len(ligne) > 1 :
