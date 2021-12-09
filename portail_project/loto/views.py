@@ -6,9 +6,18 @@ from .tools import *
 
 @csrf_exempt
 def home(request):
+    return render(request,'loto/index.html')
+
+def LotoUpdate(request):
     post=request.POST.get('x')
     y=BddUpdate(post)
-    return render(request,'loto/index.html',{'status':y})
+    return render(request,'loto/loto_update.html',{'status':y})
+
+def EuromillionBdd(request):
+    post=request.POST.get('x')
+    y=BddUpdate(post)
+    return render(request,'loto/euromillion_update.html',{'status':y})
+
 
 def Simulation(request):
     post=request.POST.get('x')
@@ -16,7 +25,7 @@ def Simulation(request):
         res=TirageSimulation(post)
     else:
         print("Erreur")
-    return render(request,'loto/simulation.html',{'tirages':res})
+    return render(request,'loto/loto_simulation.html',{'tirages':res})
 
 def LotoDatatable(request):
     x=request.POST.get('id')

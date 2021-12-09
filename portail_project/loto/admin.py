@@ -1,8 +1,15 @@
 from django.contrib import admin
-from .models import LotoTirage
+from .models import LotoTirage,EuromillionTirage
 
 
 class LotoTirageAdmin(admin.ModelAdmin):
-    list_display = ('t_id','t_jour','t_tirage')
+    list_display = ('tl_id','tl_jour','tl_tirage')
 
-admin.site.register(LotoTirage,LotoTirageAdmin)
+
+
+class EuromillionTirageAdmin(admin.ModelAdmin):
+    list_display = ('te_id','te_jour','te_numeros','te_numeros_comp')
+
+
+admin.site.register(LotoTirage,LotoTirageAdmin),
+admin.site.register(EuromillionTirage,EuromillionTirageAdmin)
