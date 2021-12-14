@@ -21,3 +21,4 @@ class EuromillionTirage(models.Model):
 
     def __str__ (self):
         return self.te_jour +self.te_numeros + self.te_numeros_comp
+		
